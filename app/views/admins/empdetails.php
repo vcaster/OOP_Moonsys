@@ -27,19 +27,19 @@
 						<div class="panel-body">JOB TITLE</div>
 					</div></hr><br>-->
 					<div class="text-center">
-		        <h4><i class="fa fa-user fa-1x"></i>&nbsp;User Name</h4>
-						<h5><i class="fa fa-ufa fa-briefcase fa-1x"></i>&nbsp;Job Title</h5>
-						<span class="label label-primary">Status</span>
+		        <h4><i class="fa fa-user fa-1x"></i>&nbsp;<?php echo $data['empdetails']->lastName." ".$data['empdetails']->lastName; ?></h4>
+						<h5><i class="fa fa-ufa fa-briefcase fa-1x"></i>&nbsp;<?php echo $data['empdetails']->positionName; ?></h5>
+						<span class="label label-primary"><?php echo $data['empdetails']->status; ?></span>
 		      </div><hr>
 
 					<div class="text-center">
-		        <p><i class="fa fa-ufa fa-building fa-1x"></i>&nbsp;Address</p>
-						<p><i class="fa fa-mobile fa-1x"></i>&nbsp;Phone</p>
+		        <p><i class="fa fa-ufa fa-building fa-1x"></i>&nbsp;<?php echo $data['empdetails']->address; ?></p>
+						<p><i class="fa fa-mobile fa-1x"></i>&nbsp;<?php echo $data['empdetails']->phone; ?></p>
 		      </div><hr>
 
 					<div class="text-center">
 		        <p><strong>Hired</strong></p>
-						<p>Detailed date</p>
+						<p><?php echo $data['empdetails']->hireDate; ?></p>
 		      </div><hr>
 
 					<div class="text-center">
@@ -102,7 +102,7 @@
             <div class="tab-pane active" id="home">
 
 								<!-- Extended material form grid -->
-								<form>
+								<form action="<?php echo URLROOT; ?>/admins/update/<?php echo $data['empdetails']->empID; ?>" method="post">
 
 									<i class="fa fa-address-card fa-1x"></i>&nbsp;<h2>Bio</h2>
 									<hr>
@@ -112,7 +112,7 @@
 								        <div class="col-md-4">
 								            <!-- Material input -->
 								            <div class="md-form form-group">
-								                <input disabled type="text" class="form-control" id="inputAddress4MD" placeholder="Employee ID">
+								                <input disabled type="text" class="form-control" id="inputAddress4MD" value="<?php echo $data['empdetails']->empID; ?>">
 								                <label for="inputAddress4MD">Employee ID</label>
 								            </div>
 								        </div>
@@ -127,7 +127,7 @@
 								        <div class="col-md-4">
 								            <!-- Material input -->
 								            <div class="md-form form-group">
-								                <input type="text" class="form-control" id="inputFirstNameMD" placeholder="First Name">
+								                <input type="text" class="form-control" name="fname" id="inputFirstNameMD" value="<?php echo $data['empdetails']->firstName; ?>">
 								                <label for="inputFirstNameMD">First Name</label>
 								            </div>
 								        </div>
@@ -137,7 +137,7 @@
 								        <div class="col-md-4">
 								            <!-- Material input -->
 								            <div class="md-form form-group">
-								                <input type="text" class="form-control" id="inputMiddleNameMD" placeholder="Middle Name">
+								                <input type="text" class="form-control" name="mname" id="inputMiddleNameMD" value="<?php echo $data['empdetails']->middleName; ?>">
 								                <label for="inputMiddleNameMD">Middle Name</label>
 								            </div>
 								        </div>
@@ -147,7 +147,7 @@
 								        <div class="col-md-4">
 								            <!-- Material input -->
 								            <div class="md-form form-group">
-								                <input type="text" class="form-control" id="inputLastNameMD" placeholder="Last Name">
+								                <input type="text" class="form-control" name="lname" id="inputLastNameMD" value="<?php echo $data['empdetails']->lastName; ?>">
 								                <label for="inputLastNameMD">Last Name</label>
 								            </div>
 								        </div>
@@ -160,7 +160,7 @@
 										<div class="col-md-4">
 												<!-- Material input -->
 												<div class="md-form form-group">
-														<input type="text" class="form-control" id="inputPhoneMD" placeholder="Phone">
+														<input type="text" class="form-control" name="phonen" id="inputPhoneMD" value="<?php echo $data['empdetails']->phone; ?>">
 														<label for="inputPhoneMD">Phone</label>
 												</div>
 										</div>
@@ -169,24 +169,31 @@
 											<div class="col-md-4">
 													<!-- Material input -->
 													<div class="md-form form-group">
-															<input type="text" class="form-control" id="inputBirthDateMD" placeholder="Birth Date">
+															<input type="text" class="form-control" name="birthDate" id="inputBirthDateMD" value="<?php echo $data['empdetails']->birthDate; ?>">
 															<label for="inputBirthDateMD">BirthDate</label>
 													</div>
 											</div>
 											<!-- Grid column -->
-											<div class="col-md-4">
+											<div class="col-md-2">
 													<!-- Material input -->
 													<div class="md-form form-group">
 														<!-- <label for="inputGenderDateMD">Gender</label> -->
-															<select class="mdb-select colorful-select dropdown-info">
-															  <option value="" disabled>Gender</option>
-															  <option value="1">Male</option>
-															  <option value="2">Female</option>
+															<select disabled class="mdb-select colorful-select dropdown-info" name="sex" >
+															  <option value="<?php echo $data['empdetails']->sex; ?>" selected disabled hidden ><?php echo $data['empdetails']->sex; ?></option>
+															  <option value="M">M</option>
+															  <option value="F">F</option>
 															</select>
 
 													</div>
 											</div>
 											<!-- Grid column -->
+											<div class="col-md-2">
+												<!-- Material input -->
+												<div class="md-form form-group">
+														<input type="text" class="form-control" name="age" id="inputEmailMD" value="<?php echo $data['empdetails']->age; ?>">
+														<label for="inputEmailMD">Age</label>
+												</div>
+										</div>
 
 								</div><br>
 								<div class="form-row">
@@ -194,7 +201,7 @@
 										<div class="col-md-4">
 												<!-- Material input -->
 												<div class="md-form form-group">
-														<input type="text" class="form-control" id="inputEmailMD" placeholder="E-mail">
+														<input type="text" class="form-control" name="email" id="inputEmailMD" value="<?php echo $data['empdetails']->email; ?>">
 														<label for="inputEmailMD">E-mail</label>
 												</div>
 										</div>
@@ -203,7 +210,7 @@
 										<div class="col-md-4">
 												<!-- Material input -->
 												<div class="md-form form-group">
-														<input type="text" class="form-control" id="inputNatMD" placeholder="Nationality">
+														<input type="text" class="form-control" name="nationality" id="inputNatMD" value="<?php echo $data['empdetails']->nationality; ?>">
 														<label for="inputNatMD">Nationality</label>
 												</div>
 										</div>
@@ -212,8 +219,8 @@
 												<!-- Material input -->
 												<div class="md-form form-group">
 													<!-- <label for="inputGenderDateMD">Gender</label> -->
-														<select class="mdb-select colorful-select dropdown-info">
-															<option value="" disabled>Status</option>
+														<select class="mdb-select colorful-select dropdown-info" name="status">
+															<option value="<?php echo $data['empdetails']->status; ?>" selected disabled hidden ><?php echo $data['empdetails']->status; ?></option>
 															<option value="1">Active</option>
 															<option value="2">Suspended</option>
 															<option value="3">Fired</option>
@@ -230,27 +237,27 @@
 								<hr><br>
 								<div class="form-row"><!-- Grid row -->
 								<!-- Grid column -->
-								<div class="col-md-8">
+								<div class="col-md-12">
 										<!-- Material input -->
 										<div class="md-form form-group">
-												<input type="text" class="form-control" id="inputAddressMD" placeholder="Address">
+												<input type="text" class="form-control" name="address" id="inputAddressMD" value="<?php echo $data['empdetails']->address; ?>">
 												<label for="inputAddressMD">Address</label>
 										</div>
 								</div>
 								<!-- Grid column -->
 								<!-- Grid column -->
-								<div class="col-md-4">
+								<!-- <div class="col-md-4"> -->
 										<!-- Material input -->
-										<div class="md-form form-group">
+										<!-- div class="md-form form-group">
 												<input type="text" class="form-control" id="inputCityMD" placeholder="City">
 												<label for="inputCityMD">City</label>
-										</div>
-								</div>
+										</div> -->
+								<!-- </div> -->
 								<!-- Grid column -->
 							</div><br>
 							<!-- Grid row -->
 
-								    <button type="submit" class="btn btn-primary btn-md pull-right">Save</button>
+								    <a href="<?php echo URLROOT; ?>/admins/update/<?php echo $data['empdetails']->empID; ?>"><input type="submit" class="btn btn-primary btn-md pull-right" value="Save" id="sub"></a>
 								</form>
 
 
@@ -381,3 +388,4 @@
 	</div>
 </div>
 <?php require APPROOT . '/views/inc/admfooter.php'; ?>
+ 

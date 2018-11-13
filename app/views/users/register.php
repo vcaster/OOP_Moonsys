@@ -92,10 +92,10 @@
         <select name="dept" id="select-profession">
           <option value="" disabled>Desired Department</option>
           <option value="1">1</option>
-          <option value="gamer">Gamer</option>
-          <option value="developer">Developer</option>
-          <option value="programmer">Programmer</option>
-          <option value="designer">Designer</option>
+          <option class="pull-right" value="gamer">Gamer</option>
+          <option class="pull-right" value="developer">Developer</option>
+          <option class="pull-right" value="programmer">Programmer</option>
+          <option class="pull-right" value="designer">Designer</option>
         </select>
         </div>
         <div style="width:100%;">

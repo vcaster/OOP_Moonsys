@@ -99,7 +99,7 @@
 
         // Validate Confirm Password
         if(empty($data['confirm_password'])){
-          $data['confirm_password_err'] = 'Pleae confirm password';
+          $data['confirm_password_err'] = 'Please confirm password';
         } else {
           if($data['password'] != $data['confirm_password']){
             $data['confirm_password_err'] = 'Passwords do not match';
@@ -150,7 +150,7 @@
           'dept_err' => '',
           'password_err' => '',
           'age_err' => '',
-          'confirm_passwords_err' => '',
+          'confirm_password_err' => '',
           'sex_err' => '',
           'birthdate_err' => '',
           'phonen_err' => '',
@@ -186,7 +186,7 @@
 
         // Validate Email
         if(empty($data['email'])){
-          $data['email_err'] = 'Pleae enter email';
+          $data['email_err'] = 'Please enter email';
         }
 
         // Validate Password
@@ -235,7 +235,7 @@
 
   public function createUserSession($user)
     {
-      $_SESSION['user_id'] = $user->id;
+      $_SESSION['user_id'] = $user->empID;
       $_SESSION['user_email'] = $user->email;
       $_SESSION['user_lname'] = $user->firstName;
       redirect('pages/admindex');
@@ -249,12 +249,5 @@
       session_destroy();
       redirect('users/login');
     }
-    public function isLoggedIn()
-    {
-      if(isset($_SESSION['user_id'])){
-        return true;
-      }else{
-        return false;
-      }
-    }
+   
   }

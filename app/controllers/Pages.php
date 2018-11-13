@@ -3,6 +3,9 @@
 
     public function __construct(){
 
+      if(!isloggedIn()){
+        redirect('users/login');
+      }
       $this->postModel = $this->model('Post');
 
     }
