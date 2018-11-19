@@ -18,7 +18,7 @@
 
 
                 <!--search-box-->
-               <!--  <div class="search-box">
+                <!-- <div class="search-box">
                     <form class="input">
                         <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
                         <label class="input__label" for="input-31">
@@ -34,9 +34,10 @@
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">
-                                    <span class="prfil-img"><img src="<?php echo URLROOT ?>/images/2 (2).jpg" alt=""> </span><div class="user-name">
+                                   <span class="prfil-img"><img src="<?php echo URLROOT ?>/images/2 (2).jpg" alt=""> </span>
+                                    <div class="user-name">
                                         <p><?php echo $_SESSION['user_fname']; ?> &nbsp; <?php echo $_SESSION['user_lname']; ?></p>
-                                        <span>Administrator</span>
+                                        <span><?php echo $_SESSION['user_job']; ?></span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
